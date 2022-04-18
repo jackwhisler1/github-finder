@@ -15,7 +15,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar/>
+        <Navbar title= "GitHub Finder" icon = "fab fa-github"/>
         {loading ? (
           <h2>Loading . . . </h2>
         ) : (
