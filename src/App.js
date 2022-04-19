@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { Component } from "react";
-import Navbar from "./components/layout/navbar";
+import Navbar from "./components/layout/Navbar";
 import UserItem from "./components/users/UserItem";
 import axios from "axios";
 import Users from "./components/users/Users";
@@ -14,7 +14,9 @@ class App extends Component {
   // life cycle method
   async componentDidMount() {
     this.setState({ loading: true });
-    const response = await axios.get("https://api.github.com/users");
+    const response = await axios.get(
+      `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
     this.setState({ users: response.data, loading: false });
   }
 
