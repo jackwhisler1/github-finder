@@ -23,7 +23,7 @@ class App extends Component {
         </div>
 
         {/* {loading ? (
-          <h2>Loading . .git  . </h2>
+          <h2>Loading . . </h2>
         ) : (
           <h1>Hello {showName && name}</h1>
           // ternary operator to show name
