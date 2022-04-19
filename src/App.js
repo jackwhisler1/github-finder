@@ -2,9 +2,22 @@ import "./App.css";
 import React, { Component } from "react";
 import Navbar from "./components/layout/navbar";
 import UserItem from "./components/users/UserItem";
+import axios from "axios";
 import Users from "./components/users/Users";
 
 class App extends Component {
+  state = {
+    users: [],
+    loading: false,
+  };
+
+  // life cycle method
+  async componentDidMount() {
+    this.setState({ loading: true });
+    const response = await axios.get("https://api.github.com/users");
+    this.setState({ users: response.data, loading: false });
+  }
+
   render() {
     // const name = "Jack ";
     // const loading = false;
@@ -19,7 +32,7 @@ class App extends Component {
       <div className="App">
         <Navbar title="GitHub Finder" icon="fab fa-github" />
         <div className="container">
-          <Users />
+          <Users loading={this.state.loading} users={this.state.users} />
         </div>
 
         {/* {loading ? (
